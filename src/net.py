@@ -110,7 +110,7 @@ class AGNet(nn.Module):
         self.backbone = ResNet18()
         self.age_head = self._make_head()
         self.gender_head = self._make_head()
-        self.linear1 = nn.Linear(256,100)
+        self.linear1 = nn.Linear(256,116)
         self.linear2 = nn.Linear(256,1)
 
     def _make_head(self):
