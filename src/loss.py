@@ -11,7 +11,7 @@ class AGLoss(nn.Module):
 	def forward(self, age_preds, age_targets, gender_preds, gender_targets):
 		"""Compute loss between (age_preds, age_targets) and (gender_preds, gender_targets)"""
 		age_prob = F.softmax(age_preds, dim=1).cuda()
-		age_expect = torch.sum(Variable(torch.arange(1, 117))*age_prob.long().cpu(), 1).cuda()
+		age_expect = [torch.argmax(age_prob[i]) + 1 for i in range(0, 128)]
 		print(age_prob.shape)
 		print(age_expect.shape)
 		print(gender_preds.shape)
